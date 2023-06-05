@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
+import { Homepage } from '../Pages/HomePage'
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -8,10 +9,23 @@ export const SignIn = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    const test = {
+      userName: "abc", 
+      pw: "123"
+    }
+
     // Store token in localStorage
-    
+    localStorage.setItem(SignIn.JSON.stringify(test))
+    const onHandleRead = () => {
+      const i = JSON.parse(localStorage.getItem(test))
+      console.log(i)
+    }
+   
     // Navigate user to home page
-  };
+    <Routes>
+    <Route path = 'homepage' exact={true} element ={<Homepage />}/>
+    </Routes>
+    };
 
   return (
     <div>
